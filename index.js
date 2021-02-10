@@ -3,7 +3,7 @@ const { input } = require("@saltcorn/markup/tags");
 const html = {
   name: "UUID",
   sql_name: "uuid",
-  primaryKey: { default: "uuid_generate_v4()" },
+  primaryKey: { default_sql: "uuid_generate_v4()" },
   fieldviews: {
     show: { isEdit: false, run: (v) => v || "" },
     editHTML: {
