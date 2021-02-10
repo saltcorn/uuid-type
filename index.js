@@ -1,4 +1,10 @@
 const { input } = require("@saltcorn/markup/tags");
+const db = require("@saltcorn/data/db");
+
+const onLoad = async () => {
+  if (!db.isSQLite)
+    await db.query('create extension if not exists "uuid-ossp";');
+};
 
 const uuid = {
   name: "UUID",
@@ -30,4 +36,4 @@ const uuid = {
   },
 };
 
-module.exports = { sc_plugin_api_version: 1, types: [uuid] };
+module.exports = { sc_plugin_api_version: 1, types: [uuid], onLoad };
