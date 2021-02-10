@@ -1,6 +1,6 @@
 const { input } = require("@saltcorn/markup/tags");
 
-const html = {
+const uuid = {
   name: "UUID",
   sql_name: "uuid",
   primaryKey: { default_sql: "uuid_generate_v4()" },
@@ -30,4 +30,4 @@ const html = {
   },
 };
 
-module.exports = { sc_plugin_api_version: 1, types: [html] };
+module.exports = { sc_plugin_api_version: 1, types: [uuid] };
