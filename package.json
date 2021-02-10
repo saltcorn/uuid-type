@@ -1,0 +1,22 @@
+{
+  "name": "@saltcorn/uuid-type",
+  "version": "0.1.0",
+  "description": "UUID field type",
+  "main": "index.js",
+  "dependencies": {
+    "@saltcorn/data": "^0.3.0",
+    "@saltcorn/markup": "^0.3.0"
+  },
+  "author": "Tom Nielsen",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "repository": "github:saltcorn/uuid-type",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
