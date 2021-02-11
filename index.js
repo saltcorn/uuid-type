@@ -8,8 +8,8 @@ const onLoad = async () => {
 
 const uuid = {
   name: "UUID",
-  sql_name: "uuid",
-  primaryKey: { default_sql: "uuid_generate_v4()" },
+  sql_name: db.isSQLite ? "text" : "uuid",
+  primaryKey: db.isSQLite ? undefined : { default_sql: "uuid_generate_v4()" },
   fieldviews: {
     show: { isEdit: false, run: (v) => v || "" },
     editHTML: {
