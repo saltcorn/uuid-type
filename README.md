@@ -22,8 +22,8 @@ For instance, if your database is called saltcorn and you are logged in as root,
 sudo -iu postgres psql -U postgres -d saltcorn -c 'create extension if not exists "uuid-ossp";'
 ```
 
-Note that if you reset your schema using `saltcorn reset-schema`, you may have to run discommend again.
+Note that if you reset your schema using `saltcorn reset-schema`, you may have to run this command again.
 
-On recent DigitalOcean marketplace droplets (initial >0.4.4) this command has already been run. If you have 
+On recent DigitalOcean marketplace droplets (initial version >=0.4.4) the `uuid-ossp` extension has already been installed. If you have 
 a droplet created prior to that, upgrading Saltcorn will not issue this command on its own. You will need to 
 issue the command to create the extension on the terminal.
