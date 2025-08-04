@@ -29,7 +29,7 @@ const uuid = {
   read: (v) => {
     switch (typeof v) {
       case "string":
-        return v;
+        return v || null;
       default:
         return undefined;
     }
