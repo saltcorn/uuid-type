@@ -1,15 +1,18 @@
 const { input } = require("@saltcorn/markup/tags");
 const db = require("@saltcorn/data/db");
+const { isNode } = require("@saltcorn/data/utils");
 
 const onLoad = async () => {
-  if (!db.isSQLite)
+  if (isNode())
     await db.query('create extension if not exists "uuid-ossp";');
 };
 
 const uuid = {
   name: "UUID",
-  sql_name: db.isSQLite ? "text" : "uuid",
-  primaryKey: db.isSQLite ? undefined : { default_sql: "uuid_generate_v4()" },
+  sql_name: isNode() ? "uuid" : "text",
+  primaryKey: isNode()
+    ? { default_sql: "uuid_generate_v4()" }
+    : { default_js: () => crypto.randomUUID() },
   fieldviews: {
     show: { isEdit: false, run: (v) => v || "" },
     editHTML: {
@@ -36,4 +39,9 @@ const uuid = {
   },
 };
 
-module.exports = { sc_plugin_api_version: 1, types: [uuid], onLoad };
+module.exports = {
+  sc_plugin_api_version: 1,
+  types: [uuid],
+  onLoad,
+  ready_for_mobile: true,
+};
